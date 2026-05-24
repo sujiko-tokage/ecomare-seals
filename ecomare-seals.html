@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecomare アザラシ図鑑</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --sky-top:#7ab8d8;
+  --sky-mid:#b8daf0;
+  --sky-low:#daeef8;
+  --horizon:#eef0e4;
+  --sand:#d8c89a;
+  --sea:#3e7ea8;
+  --sea-light:#6aaac8;
+  --txt:#1a2e3c;
+  --txt-mid:#4a6a7a;
+  --txt-soft:#88a8b8;
+  --accent:#3878a8;
+  --accent2:#5aaac8;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  font-weight:300;
+  background:#ddeef8;
+  color:var(--txt);
+  overflow-x:hidden;
+}
+
+/* ========== HERO ========== */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.sky{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    #7ab8d8 0%,
+    #a8d0e8 15%,
+    #c8e4f4 32%,
+    #daeef8 50%,
+    #e8f0e0 66%,
+    #ddd0a8 78%,
+    #c8b888 88%,
+    #4a88b0 88%,
+    #2e6890 94%,
+    #1a4a70 100%
+  );
+}
+
+/* clouds */
+.clouds{position:absolute;inset:0;pointer-events:none;}
+.cloud{
+  position:absolute;
+  background:white;
+  border-radius:999px;
+  filter:blur(3px);
+}
+.cloud::before,.cloud::after{
+  content:'';position:absolute;
+  background:white;border-radius:50%;
+}
+.c1{width:280px;height:52px;top:8%;animation:drift 88s linear -10s infinite;opacity:.72;}
+.c1::before{width:110px;height:80px;top:-42px;left:38px;}
+.c1::after{width:75px;height:58px;top:-30px;left:130px;}
+.c2{width:190px;height:36px;top:22%;animation:drift 112s linear -45s infinite;opacity:.5;}
+.c2::before{width:80px;height:58px;top:-30px;left:25px;}
+.c2::after{width:55px;height:42px;top:-20px;left:90px;}
+.c3{width:340px;height:60px;top:5%;animation:drift 76s linear -28s infinite;opacity:.6;}
+.c3::before{width:130px;height:92px;top:-48px;left:48px;}
+.c3::after{width:88px;height:68px;top:-36px;left:155px;}
+.c4{width:160px;height:30px;top:36%;animation:drift 135s linear -70s infinite;opacity:.38;}
+.c4::before{width:68px;height:50px;top:-26px;left:18px;}
+.c4::after{width:48px;height:36px;top:-16px;left:78px;}
+.c5{width:240px;height:44px;top:14%;animation:drift 98s linear -55s infinite;opacity:.55;}
+.c5::before{width:96px;height:70px;top:-36px;left:32px;}
+.c5::after{width:66px;height:52px;top:-26px;left:112px;}
+
+@keyframes drift{
+  from{transform:translateX(-120vw);}
+  to{transform:translateX(120vw);}
+}
+
+/* sand strip */
+.sand{
+  position:absolute;bottom:12%;left:0;right:0;height:9%;
+  background:linear-gradient(180deg,#e0d0a2 0%,#c8b882 100%);
+}
+.sand::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:rgba(255,248,220,.5);
+}
+
+/* sea */
+.sea-block{
+  position:absolute;bottom:0;left:0;right:0;height:14%;
+  background:linear-gradient(180deg,#5aaac8 0%,#3878a8 50%,#1e5888 100%);
+  overflow:hidden;
+}
+.wave-line{
+  position:absolute;left:-5%;right:-5%;
+  height:3px;background:rgba(255,255,255,.22);border-radius:50%;
+}
+.w1{top:20%;animation:wv 7s ease-in-out infinite;}
+.w2{top:50%;animation:wv 10s ease-in-out -3s infinite;opacity:.6;}
+.w3{top:75%;animation:wv 13s ease-in-out -7s infinite;opacity:.4;}
+@keyframes wv{
+  0%,100%{transform:scaleX(1.02) translateY(0);}
+  50%{transform:scaleX(.98) translateY(2px);}
+}
+
+/* hero text */
+.hero-content{
+  position:relative;z-index:10;
+  text-align:center;padding:2rem;
+  animation:riseIn 1.8s ease .2s both;
+}
+@keyframes riseIn{
+  from{opacity:0;transform:translateY(28px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.hero-eyebrow{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:.95rem;
+  color:rgba(20,50,75,.6);
+  letter-spacing:.22em;margin-bottom:1rem;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-weight:300;
+  font-size:clamp(2.8rem,8vw,6rem);
+  color:#12263a;line-height:1.08;
+  letter-spacing:-.02em;
+  text-shadow:0 2px 24px rgba(255,255,255,.55);
+}
+.hero-title em{
+  display:block;font-style:italic;
+  color:#1e5888;
+}
+.hero-sub{
+  margin-top:1.4rem;font-size:.72rem;
+  letter-spacing:.26em;
+  color:rgba(20,50,75,.5);
+  text-transform:uppercase;
+}
+.scroll-cue{
+  position:absolute;bottom:14%;left:50%;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  opacity:.45;z-index:10;
+  animation:bob 2.4s ease-in-out infinite;
+}
+.scroll-cue span{font-size:.62rem;letter-spacing:.18em;color:#1e3a52;}
+.scroll-line{width:1px;height:28px;background:#1e3a52;}
+@keyframes bob{
+  0%,100%{transform:translateX(-50%) translateY(0);}
+  50%{transform:translateX(-50%) translateY(9px);}
+}
+
+/* ========== MAIN ========== */
+main{
+  background:linear-gradient(180deg,#ddeef8 0%,#eef6fc 30%,#f5fafd 100%);
+  min-height:100vh;
+}
+
+/* filter bar */
+.filter-bar{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:.75rem;padding:3.5rem 1rem 2.5rem;
+}
+.filter-btn{
+  font-family:'Noto Sans JP',sans-serif;
+  font-weight:300;font-size:.75rem;
+  letter-spacing:.12em;
+  padding:.45rem 1.35rem;border-radius:1px;
+  border:1px solid rgba(80,150,195,.3);
+  background:rgba(255,255,255,.6);
+  color:#4a7898;cursor:pointer;
+  backdrop-filter:blur(8px);
+  transition:all .2s;
+}
+.filter-btn:hover{background:rgba(255,255,255,.9);}
+.filter-btn.active{
+  background:#3878a8;color:white;
+  border-color:#3878a8;
+}
+
+/* species section */
+.species-section{
+  max-width:1080px;margin:0 auto;
+  padding:1rem 1.5rem 4rem;
+  display:none;
+}
+.species-section.visible{display:block;}
+
+.species-header{
+  display:flex;align-items:center;gap:1.4rem;
+  margin-bottom:2rem;
+}
+.species-line{flex:1;height:1px;}
+.species-line.l{background:linear-gradient(90deg,transparent,rgba(80,150,195,.3));}
+.species-line.r{background:linear-gradient(90deg,rgba(80,150,195,.3),transparent);}
+.species-name{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-weight:300;
+  font-size:1.7rem;text-align:center;
+  line-height:1.15;
+}
+.species-sub{
+  font-size:.68rem;letter-spacing:.2em;
+  color:var(--txt-soft);margin-top:3px;
+  text-align:center;
+}
+
+/* cards grid */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(288px,1fr));
+  gap:1.1rem;
+}
+
+/* seal card */
+.card{
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(12px);
+  border-radius:2px;overflow:hidden;
+  border:1px solid rgba(200,228,242,.55);
+  box-shadow:0 2px 18px rgba(50,120,170,.09);
+  transition:transform .25s ease,box-shadow .25s ease;
+  cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 32px rgba(50,120,170,.16);
+}
+.card.deceased{
+  background:rgba(238,242,245,.75);
+}
+.card-bar{height:3px;}
+.card-inner{padding:1.4rem 1.5rem 1.1rem;}
+.card-top-row{display:flex;justify-content:space-between;align-items:flex-start;}
+.card-name{
+  font-family:'Playfair Display',serif;
+  font-weight:300;font-size:1.75rem;
+  color:#12263a;line-height:1;
+}
+.card.deceased .card-name{color:#8aa0aa;}
+.card-name-jp{
+  font-size:.7rem;letter-spacing:.14em;
+  color:var(--txt-soft);margin-top:4px;
+}
+.card-gender{
+  font-size:.66rem;padding:.18rem .52rem;
+  border-radius:1px;letter-spacing:.07em;
+  margin-top:4px;flex-shrink:0;
+}
+.card-tags{
+  display:flex;flex-wrap:wrap;gap:4px;
+  margin-top:.85rem;
+}
+.tag{
+  font-size:.64rem;padding:.16rem .48rem;
+  border-radius:1px;letter-spacing:.05em;
+}
+.card-toggle{
+  display:flex;justify-content:flex-end;
+  margin-top:.8rem;
+  font-size:.7rem;letter-spacing:.1em;
+  color:var(--txt-soft);
+  transition:transform .2s;
+  user-select:none;
+}
+.card-toggle.open{transform:rotate(180deg);}
+
+/* facts */
+.card-facts{
+  padding:0 1.5rem 1.3rem;
+  border-top:1px solid rgba(200,228,242,.45);
+  display:none;
+  animation:factIn .22s ease both;
+}
+.card-facts.open{display:block;}
+@keyframes factIn{
+  from{opacity:0;transform:translateY(-5px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.fact-row{
+  display:flex;gap:.8rem;
+  margin-top:.82rem;align-items:flex-start;
+}
+.fact-label{
+  font-size:.66rem;min-width:3rem;
+  flex-shrink:0;padding-top:2px;
+  letter-spacing:.05em;
+}
+.fact-text{
+  font-size:.78rem;color:var(--txt-mid);
+  line-height:1.68;
+}
+
+/* ========== FACILITY ========== */
+.facility{
+  background:linear-gradient(135deg,rgba(60,130,180,.1),rgba(80,170,210,.06));
+  border-top:1px solid rgba(100,170,210,.18);
+  padding:4.5rem 1.5rem;
+}
+.facility-inner{max-width:880px;margin:0 auto;}
+.section-eyebrow{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:.88rem;
+  color:var(--accent2);letter-spacing:.2em;
+  text-align:center;margin-bottom:.6rem;
+}
+.section-heading{
+  font-family:'Playfair Display',serif;
+  font-weight:300;font-size:2rem;
+  color:var(--txt);text-align:center;
+}
+.section-rule{
+  width:50px;height:1px;
+  background:rgba(80,150,195,.35);
+  margin:1.3rem auto 2.5rem;
+}
+.fac-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem;
+}
+.fac-card{
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(200,228,242,.5);
+  border-radius:2px;padding:1.4rem;
+}
+.fac-icon{font-size:1.5rem;margin-bottom:.6rem;}
+.fac-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;color:var(--txt);
+  margin-bottom:.45rem;
+}
+.fac-text{font-size:.76rem;color:var(--txt-mid);line-height:1.75;}
+
+/* note */
+.note{
+  text-align:center;
+  padding:2.5rem 1.5rem 1.5rem;
+  background:rgba(255,255,255,.5);
+}
+.note p{
+  font-size:.7rem;color:var(--txt-soft);
+  line-height:1.95;max-width:620px;margin:0 auto;
+}
+
+/* footer */
+footer{
+  background:#162a3a;
+  color:rgba(255,255,255,.45);
+  text-align:center;
+  padding:2rem 1rem;
+  font-size:.72rem;letter-spacing:.1em;
+}
+footer .ft{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1.25rem;
+  color:rgba(255,255,255,.85);
+  display:block;margin-bottom:.4rem;
+}
+footer a{color:rgba(255,255,255,.65);text-decoration:none;}
+
+/* card stagger */
+.card{opacity:0;animation:cardUp .5s ease both;}
+@keyframes cardUp{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sky"></div>
+  <div class="clouds">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+    <div class="cloud c5"></div>
+  </div>
+  <div class="sand"></div>
+  <div class="sea-block">
+    <div class="wave-line w1"></div>
+    <div class="wave-line w2"></div>
+    <div class="wave-line w3"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Texel, Nederland 🇳🇱</p>
+    <h1 class="hero-title">
+      Ecomare<br>
+      <em>アザラシ図鑑</em>
+    </h1>
+    <p class="hero-sub">Zeehonden van Ecomare</p>
+  </div>
+  <div class="scroll-cue">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main>
+
+  <!-- filter -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">すべて</button>
+    <button class="filter-btn" data-filter="common">ゴマフアザラシ</button>
+    <button class="filter-btn" data-filter="grey">ハイイロアザラシ</button>
+    <button class="filter-btn" data-filter="ringed">リングアザラシ</button>
+  </div>
+
+  <!-- ゴマフアザラシ -->
+  <div class="species-section visible" id="sec-common">
+    <div class="species-header">
+      <div class="species-line l"></div>
+      <div>
+        <div class="species-name" style="color:#3878a8;">ゴマフアザラシ</div>
+        <div class="species-sub">Gewone Zeehond</div>
+      </div>
+      <div class="species-line r"></div>
+    </div>
+    <div class="cards" id="cards-common"></div>
+  </div>
+
+  <!-- ハイイロアザラシ -->
+  <div class="species-section visible" id="sec-grey">
+    <div class="species-header">
+      <div class="species-line l"></div>
+      <div>
+        <div class="species-name" style="color:#5a8aaa;">ハイイロアザラシ</div>
+        <div class="species-sub">Grijze Zeehond</div>
+      </div>
+      <div class="species-line r"></div>
+    </div>
+    <div class="cards" id="cards-grey"></div>
+  </div>
+
+  <!-- リングアザラシ -->
+  <div class="species-section visible" id="sec-ringed">
+    <div class="species-header">
+      <div class="species-line l"></div>
+      <div>
+        <div class="species-name" style="color:#3a7a9a;">リングアザラシ</div>
+        <div class="species-sub">Ringelrob</div>
+      </div>
+      <div class="species-line r"></div>
+    </div>
+    <div class="cards" id="cards-ringed"></div>
+  </div>
+
+</main>
+
+<!-- FACILITY -->
+<section class="facility">
+  <div class="facility-inner">
+    <p class="section-eyebrow">About Ecomare</p>
+    <h2 class="section-heading">施設について</h2>
+    <div class="section-rule"></div>
+    <div class="fac-grid">
+      <div class="fac-card">
+        <div class="fac-icon">📍</div>
+        <div class="fac-title">場所</div>
+        <p class="fac-text">オランダ・テクセル島のDe Koog。Duinen van Texel国立公園内のワッデン海沿岸</p>
+      </div>
+      <div class="fac-card">
+        <div class="fac-icon">🕐</div>
+        <div class="fac-title">餌やり</div>
+        <p class="fac-text">毎日 <strong>11:00</strong> と <strong>15:30</strong>。解説つきプレゼンテーション形式</p>
+      </div>
+      <div class="fac-card">
+        <div class="fac-icon">🌊</div>
+        <div class="fac-title">保護活動</div>
+        <p class="fac-text">年間約100頭の傷病アザラシを保護・リハビリし海へ返す。1952年開始</p>
+      </div>
+      <div class="fac-card">
+        <div class="fac-icon">💛</div>
+        <div class="fac-title">養子縁組</div>
+        <p class="fac-text">Annie・Daan・Betty・Karienを象徴的に養子縁組可能。施設運営を支援できる</p>
+      </div>
+      <div class="fac-card">
+        <div class="fac-icon">🐾</div>
+        <div class="fac-title">3種飼育</div>
+        <p class="fac-text">ゴマフ・ハイイロ・リングアザラシの3種。水族館・博物館も併設</p>
+      </div>
+      <div class="fac-card">
+        <div class="fac-icon">🔴</div>
+        <div class="fac-title">ライブ配信</div>
+        <p class="fac-text">YouTubeで公開中。「ecomare zeehonden live」で検索</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="note">
+  <p>
+    📝 年齢はLodde・Saelmaの2019年4月来館記事をもとに「記載年齢＋5」で算出（概算）<br>
+    情報源：Ecomare公式ブログ・ニュース（ecomare.nl）、ライブ配信チャット（niffler 氏の詳細解説）<br>
+    追記・修正はIssueまたはPRでお知らせください
+  </p>
+</div>
+
+<footer>
+  <span class="ft">Ecomare アザラシ図鑑</span>
+  <div>Zeehonden van <a href="https://www.ecomare.nl" target="_blank">ecomare.nl</a> — Texel, Nederland</div>
+  <div style="margin-top:.5rem;opacity:.38;">非公式まとめ。情報は公式サイト・ブログ・ライブ配信チャットをもとに作成</div>
+</footer>
+
+<script>
+const SEALS = [
+  {
+    id:"rob", name:"Rob", nameJp:"ロブ", species:"common", gender:"オス", deceased:false,
+    tags:["🎬 元映画俳優","📢 吠えるアザラシ","右目失明"],
+    facts:[
+      {l:"特徴",t:"右目を失明。ゴマフ唯一の「吠えるアザラシ」。飼育員が耳に手を当てるジェスチャーをした時だけ吠えるよう訓練されている"},
+      {l:"生い立ち",t:"若い頃スウェーデンの子ども映画に出演。撮影後に放流されたが人間に懐きすぎて野生に戻れず、ドイツのバルト海の町で有名に。ショッピングカートで運ばれた逸話もある"},
+      {l:"来館",t:"漁師の網を破るなど問題が起き、PieterburenアザラシセンターからEcomareへ"},
+      {l:"場所",t:"ライブカメラ画面右のプールの縁に上陸するのがRob"},
+    ]
+  },
+  {
+    id:"daan", name:"Daan", nameJp:"ダーン", species:"common", gender:"メス", deceased:false,
+    tags:["永住組","💛 養子縁組可能","心雑音"],
+    facts:[
+      {l:"来歴",t:"2015年11月に保護。心雑音があるため永住組となった"},
+      {l:"外見",t:"グループで最も小さい。お腹はほぼ白だが小さな黒い斑点あり"},
+      {l:"性格",t:"とても賢くグルメ。シロギスやイカは完全無視。ニシンやマサバを持つと最高の友達になれる"},
+      {l:"公式",t:"「もしあなたがニシンやサバを持っているなら彼女と親友になれるでしょう」（Ecomare公式サイト）"},
+    ]
+  },
+  {
+    id:"karien", name:"Karien", nameJp:"カリエン", species:"common", gender:"メス", deceased:false,
+    tags:["💛 養子縁組可能"],
+    facts:[
+      {l:"性格",t:"健康トレーニングで新しいことを覚えるのが大好き。学習が早く、目立つのは苦手だが自然と目立つ存在"},
+      {l:"特技",t:"自分で手を振ることを自ら習得した"},
+      {l:"場所",t:"ガラス張りのプールでSille・リングアザラシのBobと同居"},
+    ]
+  },
+  {
+    id:"rianne", name:"Rianne", nameJp:"リアンヌ", species:"common", gender:"メス", deceased:false,
+    tags:["最年長クラス","白毛"],
+    facts:[
+      {l:"特徴",t:"Ecomareで最も年上の女性アザラシの一人。全体的に白が多い毛色"},
+      {l:"健康",t:"左目が少し悪く、Facebookの動画では白内障のように白濁しているのが確認できる"},
+      {l:"場所",t:"餌やり時は右側で待つのが定位置"},
+    ]
+  },
+  {
+    id:"lodde", name:"Lodde", nameJp:"ロッデ", species:"common", gender:"オス", deceased:false,
+    tags:["🇩🇰 デンマーク組","2013年生まれ"],
+    facts:[
+      {l:"来歴",t:"2019年にSaelma・SilleとともにデンマークのOdense Zooから来館。動物園がゼアライオンのためにスペースを改修したため"},
+      {l:"外見",t:"顔が少し黒め・大きい。白黒模様がはっきり。お腹は白くない"},
+      {l:"性格",t:"自己主張が強くいたずら好きだが、訓練時は高い集中力を見せる賢いアザラシ"},
+    ]
+  },
+  {
+    id:"saelma", name:"Saelma", nameJp:"サエルマ", species:"common", gender:"メス", deceased:false,
+    tags:["🇩🇰 デンマーク組","2005年生まれ"],
+    facts:[
+      {l:"来歴",t:"Odense Zoo生まれ。2019年にLodde・SilleとともにEcomareへ"},
+      {l:"備考",t:"公式情報は少ない"},
+    ]
+  },
+  {
+    id:"sille", name:"Sille", nameJp:"シレ", species:"common", gender:"メス", deceased:false,
+    tags:["🇩🇰 デンマーク組","2005年生まれ"],
+    facts:[
+      {l:"来歴",t:"Odense Zoo生まれ（Saelmaと同年）。2019年にLodde・SilleとともにEcomareへ"},
+      {l:"場所",t:"ガラス張りのプールでKarien・Bobと同居。ライブカメラのメインプールにはいない"},
+    ]
+  },
+  {
+    id:"antonius", name:"Antonius", nameJp:"アントニウス", species:"common", gender:"オス", deceased:false,
+    tags:["2013年頃生まれ","やんちゃ"],
+    facts:[
+      {l:"外見",t:"全体的に少し黒め。Loddeによく似ており「まるで兄弟のよう」と記事に掲載"},
+      {l:"性格",t:"若くてやんちゃ"},
+    ]
+  },
+  {
+    id:"jonna", name:"Jonna", nameJp:"ジョンナ", species:"common", gender:"メス", deceased:false,
+    tags:["黒い斑点"],
+    facts:[
+      {l:"特徴",t:"目と目の間（右目寄り）に黒い斑点がある。乾いていない時は分かりにくいが、ライブではうっすら見える"},
+    ]
+  },
+  {
+    id:"annie", name:"Annie", nameJp:"アニー", species:"grey", gender:"メス", deceased:false,
+    tags:["💛 養子縁組可能","活発"],
+    facts:[
+      {l:"性格",t:"グループで最も活発。飼育員とかけっこをしたり水から飛び出したり、かくれんぼをしたりする遊び好き"},
+      {l:"食の好み",t:"ニシンも好きだがマサバが一番。Bettyのマサバを横取りしようとすることも"},
+      {l:"賢さ",t:"訓練中「誰が誰を訓練しているのか」と思わせるほどの賢さ"},
+    ]
+  },
+  {
+    id:"betty", name:"Betty", nameJp:"ベティ", species:"grey", gender:"メス", deceased:false,
+    tags:["💛 養子縁組可能","両目失明"],
+    facts:[
+      {l:"来歴",t:"イギリスで一度保護・放流されたが、その後テクセルの灯台近くで衰弱して発見。その時点で両目が失明していた"},
+      {l:"現在",t:"障害のためハイイロアザラシのグループに加わる。Annieとほぼ同じ大きさに成長"},
+      {l:"絆",t:"Fokjeと深い絆があり、Fokjeが亡くなる際にBettyが引き離そうと抵抗した"},
+    ]
+  },
+  {
+    id:"bram", name:"Bram", nameJp:"ブラム", species:"grey", gender:"メス（名はオス）", deceased:true,
+    tags:["👑 史上最高齢","2019年 逝去"],
+    facts:[
+      {l:"記録",t:"1974年保護、45歳まで生きたEcomare史上最高齢のアザラシ。自然界の最長寿命（約25年）をはるかに超えた"},
+      {l:"特徴",t:"グループで最も支配的な存在。水槽の底に20〜25分間じっと横たわるため、来館者が死んでいると勘違いすることがあった"},
+    ]
+  },
+  {
+    id:"fokje", name:"Fokje", nameJp:"フォクエ", species:"grey", gender:"メス", deceased:true,
+    tags:["2021年 逝去","30歳以上"],
+    facts:[
+      {l:"特徴",t:"老齢によって目が白濁し失明。鼻がつぶれたような独特の顔で見分けやすかった"},
+      {l:"絆",t:"Bettyと深い絆があり、Fokjeが亡くなる際にBettyが引き離そうと抵抗した"},
+    ]
+  },
+  {
+    id:"bob", name:"Bob", nameJp:"ボブ", species:"ringed", gender:"オス", deceased:false,
+    tags:["北極圏の種","輪状模様"],
+    facts:[
+      {l:"来歴",t:"2018年にRickとともにBurgers' Zoo（オランダ）からEcomareへ。Rickは2022年に死去"},
+      {l:"特徴",t:"毛皮に輪状の模様あり（名前の由来）。ゴマフより小さくずんぐり体型。オスは繁殖期に非常に強い口臭を持つ"},
+      {l:"場所",t:"ガラス張りのプールで飼育。大きな後ろフリッパーを優雅に使って泳ぐ姿が見もの"},
+    ]
+  },
+  {
+    id:"rick", name:"Rick", nameJp:"リック", species:"ringed", gender:"オス", deceased:true,
+    tags:["2022年 逝去"],
+    facts:[
+      {l:"来歴",t:"2018年にBobとともにBurgers' ZooからEcomareへ。2頭でガラス張りのプールに長く暮らした"},
+    ]
+  },
+];
+
+const COLORS = {
+  common:  {bar:"linear-gradient(90deg,#3878a8,#7ab8d8)", gender:"rgba(56,120,168,.12)", gtxt:"#3878a8", tag:"rgba(56,120,168,.1)", ttxt:"#2e6898"},
+  grey:    {bar:"linear-gradient(90deg,#6a9ab8,#a8c8d8)", gender:"rgba(90,138,168,.12)", gtxt:"#5a8aaa", tag:"rgba(90,138,168,.1)", ttxt:"#4a7898"},
+  ringed:  {bar:"linear-gradient(90deg,#3a7a9a,#7ab8cc)", gender:"rgba(58,122,154,.12)", gtxt:"#3a7a9a", tag:"rgba(58,122,154,.1)", ttxt:"#2e6888"},
+};
+
+function buildCard(seal, idx) {
+  const c = COLORS[seal.species];
+  const d = seal.deceased;
+  const div = document.createElement('div');
+  div.className = 'card' + (d ? ' deceased' : '');
+  div.style.animationDelay = (idx * 0.06) + 's';
+
+  const tagsHtml = seal.tags.map(t =>
+    `<span class="tag" style="background:${d?'#e8ecef':c.tag};color:${d?'#90a0aa':c.ttxt};border:1px solid ${d?'#d8e0e5':'rgba(80,150,195,.18)'}">${t}</span>`
+  ).join('');
+
+  const factsHtml = seal.facts.map(f =>
+    `<div class="fact-row">
+      <span class="fact-label" style="color:${d?'#90a8b8':c.gtxt}">${f.l}</span>
+      <span class="fact-text">${f.t}</span>
+    </div>`
+  ).join('');
+
+  div.innerHTML = `
+    <div class="card-bar" style="background:${d?'#b0c0ca':c.bar}"></div>
+    <div class="card-inner">
+      <div class="card-top-row">
+        <div>
+          <div class="card-name">${d?'✦ ':''}${seal.name}</div>
+          <div class="card-name-jp">${seal.nameJp}</div>
+        </div>
+        <span class="card-gender" style="background:${d?'#e8ecef':c.gender};color:${d?'#90a0aa':c.gtxt};border:1px solid ${d?'#d8e0e5':'rgba(80,150,195,.2)'}">${seal.gender}</span>
+      </div>
+      <div class="card-tags">${tagsHtml}</div>
+      <div class="card-toggle">▾</div>
+    </div>
+    <div class="card-facts">${factsHtml}</div>
+  `;
+
+  div.addEventListener('click', () => {
+    const facts = div.querySelector('.card-facts');
+    const toggle = div.querySelector('.card-toggle');
+    const open = facts.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+  });
+
+  return div;
+}
+
+// render
+['common','grey','ringed'].forEach(sp => {
+  const container = document.getElementById('cards-' + sp);
+  SEALS.filter(s => s.species === sp).forEach((seal, i) => {
+    container.appendChild(buildCard(seal, i));
+  });
+});
+
+// filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    ['common','grey','ringed'].forEach(sp => {
+      const sec = document.getElementById('sec-' + sp);
+      if(f === 'all' || f === sp) {
+        sec.classList.add('visible');
+      } else {
+        sec.classList.remove('visible');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
