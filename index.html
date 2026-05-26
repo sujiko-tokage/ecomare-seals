@@ -529,21 +529,18 @@ footer a{color:rgba(255,255,255,.65);text-decoration:none;}
 const SEALS = [
   {
     id:"rob", name:"Rob", nameJp:"ロブ", species:"common", gender:"オス", deceased:false,
-    pool:"male",
-    tags:["🎬 元映画俳優","📢 吠えるアザラシ","右目失明","🔵 男子プール"],
+    tags:["🎬 元映画俳優","📢 吠えるアザラシ","右目失明"],
     facts:[
-      {l:"プール",t:"男子プール（Rob・Antonius・Lodde・Bob）"},
       {l:"特徴",t:"右目を失明。ゴマフ唯一の「吠えるアザラシ」。飼育員が耳に手を当てるジェスチャーをした時だけ吠えるよう訓練されている"},
       {l:"生い立ち",t:"若い頃スウェーデンの子ども映画に出演。撮影後に放流されたが人間に懐きすぎて野生に戻れず、ドイツのバルト海の町で有名に。ショッピングカートで運ばれた逸話もある"},
       {l:"来館",t:"漁師の網を破るなど問題が起き、PieterburenアザラシセンターからEcomareへ"},
+      {l:"場所",t:"ライブカメラ画面右のプールの縁に上陸するのがRob"},
     ]
   },
   {
     id:"daan", name:"Daan", nameJp:"ダーン", species:"common", gender:"メス", deceased:false,
-    pool:"female",
-    tags:["永住組","💛 養子縁組可能","心雑音","🔴 女子プール"],
+    tags:["永住組","💛 養子縁組可能","心雑音"],
     facts:[
-      {l:"プール",t:"女子プール（Rianne・Jonna・Saelma・Sille・Daan・Karien）"},
       {l:"来歴",t:"2015年11月に保護。心雑音があるため永住組となった"},
       {l:"外見",t:"グループで最も小さい。お腹はほぼ白だが小さな黒い斑点あり"},
       {l:"性格",t:"とても賢くグルメ。シロギスやイカは完全無視。ニシンやマサバを持つと最高の友達になれる"},
@@ -552,20 +549,17 @@ const SEALS = [
   },
   {
     id:"karien", name:"Karien", nameJp:"カリエン", species:"common", gender:"メス", deceased:false,
-    pool:"female",
-    tags:["💛 養子縁組可能","🔴 女子プール"],
+    tags:["💛 養子縁組可能"],
     facts:[
-      {l:"プール",t:"女子プール（Rianne・Jonna・Saelma・Sille・Daan・Karien）"},
       {l:"性格",t:"健康トレーニングで新しいことを覚えるのが大好き。学習が早く、目立つのは苦手だが自然と目立つ存在"},
       {l:"特技",t:"自分で手を振ることを自ら習得した"},
+      {l:"場所",t:"ガラス張りのプールでSille・リングアザラシのBobと同居"},
     ]
   },
   {
     id:"rianne", name:"Rianne", nameJp:"リアンヌ", species:"common", gender:"メス", deceased:false,
-    pool:"female",
-    tags:["最年長クラス","白毛","🔴 女子プール"],
+    tags:["最年長クラス","白毛"],
     facts:[
-      {l:"プール",t:"女子プール（Rianne・Jonna・Saelma・Sille・Daan・Karien）"},
       {l:"特徴",t:"Ecomareで最も年上の女性アザラシの一人。全体的に白が多い毛色"},
       {l:"健康",t:"左目が少し悪く、Facebookの動画では白内障のように白濁しているのが確認できる"},
       {l:"場所",t:"餌やり時は右側で待つのが定位置"},
@@ -573,50 +567,41 @@ const SEALS = [
   },
   {
     id:"lodde", name:"Lodde", nameJp:"ロッデ", species:"common", gender:"オス", deceased:false,
-    pool:"male",
-    tags:["🇩🇰 デンマーク組","2013年生まれ","🔵 男子プール"],
+    tags:["🇩🇰 デンマーク組","2013年生まれ"],
     facts:[
-      {l:"プール",t:"男子プール（Rob・Antonius・Lodde・Bob）"},
       {l:"来歴",t:"2019年にSaelma・SilleとともにデンマークのOdense Zooから来館。動物園がゼアライオンのためにスペースを改修したため"},
       {l:"外見",t:"顔が少し黒め・大きい。白黒模様がはっきり。お腹は白くない"},
       {l:"性格",t:"自己主張が強くいたずら好きだが、訓練時は高い集中力を見せる賢いアザラシ"},
     ]
   },
   {
-    id:"saelma", name:"Saelma", nameJp:"セルマ", species:"common", gender:"メス", deceased:false,
-    pool:"female",
-    tags:["🇩🇰 デンマーク組","2005年生まれ","🔴 女子プール"],
+    id:"saelma", name:"Saelma", nameJp:"サエルマ", species:"common", gender:"メス", deceased:false,
+    tags:["🇩🇰 デンマーク組","2005年生まれ"],
     facts:[
-      {l:"プール",t:"女子プール（Rianne・Jonna・Saelma・Sille・Daan・Karien）"},
       {l:"来歴",t:"Odense Zoo生まれ。2019年にLodde・SilleとともにEcomareへ"},
       {l:"備考",t:"公式情報は少ない"},
     ]
   },
   {
-    id:"sille", name:"Sille", nameJp:"シル", species:"common", gender:"メス", deceased:false,
-    pool:"female",
-    tags:["🇩🇰 デンマーク組","2005年生まれ","🔴 女子プール"],
+    id:"sille", name:"Sille", nameJp:"シレ", species:"common", gender:"メス", deceased:false,
+    tags:["🇩🇰 デンマーク組","2005年生まれ"],
     facts:[
-      {l:"プール",t:"女子プール（Rianne・Jonna・Saelma・Sille・Daan・Karien）"},
       {l:"来歴",t:"Odense Zoo生まれ（Saelmaと同年）。2019年にLodde・SilleとともにEcomareへ"},
+      {l:"場所",t:"ガラス張りのプールでKarien・Bobと同居。ライブカメラのメインプールにはいない"},
     ]
   },
   {
     id:"antonius", name:"Antonius", nameJp:"アントニウス", species:"common", gender:"オス", deceased:false,
-    pool:"male",
-    tags:["2013年頃生まれ","やんちゃ","🔵 男子プール"],
+    tags:["2013年頃生まれ","やんちゃ"],
     facts:[
-      {l:"プール",t:"男子プール（Rob・Antonius・Lodde・Bob）"},
       {l:"外見",t:"全体的に少し黒め。Loddeによく似ており「まるで兄弟のよう」と記事に掲載"},
       {l:"性格",t:"若くてやんちゃ"},
     ]
   },
   {
-    id:"jonna", name:"Jonna", nameJp:"ジョナ", species:"common", gender:"メス", deceased:false,
-    pool:"female",
-    tags:["黒い斑点","🔴 女子プール"],
+    id:"jonna", name:"Jonna", nameJp:"ジョンナ", species:"common", gender:"メス", deceased:false,
+    tags:["黒い斑点"],
     facts:[
-      {l:"プール",t:"女子プール（Rianne・Jonna・Saelma・Sille・Daan・Karien）"},
       {l:"特徴",t:"目と目の間（右目寄り）に黒い斑点がある。乾いていない時は分かりにくいが、ライブではうっすら見える"},
     ]
   },
@@ -656,12 +641,11 @@ const SEALS = [
   },
   {
     id:"bob", name:"Bob", nameJp:"ボブ", species:"ringed", gender:"オス", deceased:false,
-    tags:["北極圏の種","輪状模様","🔵 男子プール"],
+    tags:["北極圏の種","輪状模様"],
     facts:[
-      {l:"プール",t:"男子プール（Rob・Antonius・Lodde・Bob）"},
       {l:"来歴",t:"2018年にRickとともにBurgers' Zoo（オランダ）からEcomareへ。Rickは2022年に死去"},
       {l:"特徴",t:"毛皮に輪状の模様あり（名前の由来）。ゴマフより小さくずんぐり体型。オスは繁殖期に非常に強い口臭を持つ"},
-      {l:"場所",t:"大きな後ろフリッパーを優雅に使って泳ぐ姿が見もの"},
+      {l:"場所",t:"ガラス張りのプールで飼育。大きな後ろフリッパーを優雅に使って泳ぐ姿が見もの"},
     ]
   },
   {
@@ -690,63 +674,4 @@ function buildCard(seal, idx) {
     `<span class="tag" style="background:${d?'#e8ecef':c.tag};color:${d?'#90a0aa':c.ttxt};border:1px solid ${d?'#d8e0e5':'rgba(80,150,195,.18)'}">${t}</span>`
   ).join('');
 
-  const factsHtml = seal.facts.map(f =>
-    `<div class="fact-row">
-      <span class="fact-label" style="color:${d?'#90a8b8':c.gtxt}">${f.l}</span>
-      <span class="fact-text">${f.t}</span>
-    </div>`
-  ).join('');
-
-  div.innerHTML = `
-    <div class="card-bar" style="background:${d?'#b0c0ca':c.bar}"></div>
-    <div class="card-inner">
-      <div class="card-top-row">
-        <div>
-          <div class="card-name">${d?'✦ ':''}${seal.name}</div>
-          <div class="card-name-jp">${seal.nameJp}</div>
-        </div>
-        <span class="card-gender" style="background:${d?'#e8ecef':c.gender};color:${d?'#90a0aa':c.gtxt};border:1px solid ${d?'#d8e0e5':'rgba(80,150,195,.2)'}">${seal.gender}</span>
-      </div>
-      <div class="card-tags">${tagsHtml}</div>
-      <div class="card-toggle">▾</div>
-    </div>
-    <div class="card-facts">${factsHtml}</div>
-  `;
-
-  div.addEventListener('click', () => {
-    const facts = div.querySelector('.card-facts');
-    const toggle = div.querySelector('.card-toggle');
-    const open = facts.classList.toggle('open');
-    toggle.classList.toggle('open', open);
-  });
-
-  return div;
-}
-
-// render
-['common','grey','ringed'].forEach(sp => {
-  const container = document.getElementById('cards-' + sp);
-  SEALS.filter(s => s.species === sp).forEach((seal, i) => {
-    container.appendChild(buildCard(seal, i));
-  });
-});
-
-// filter
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.dataset.filter;
-    ['common','grey','ringed'].forEach(sp => {
-      const sec = document.getElementById('sec-' + sp);
-      if(f === 'all' || f === sp) {
-        sec.classList.add('visible');
-      } else {
-        sec.classList.remove('visible');
-      }
-    });
-  });
-});
-</script>
-</body>
-</html>
+  const factsHtml = sea
